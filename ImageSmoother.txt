@@ -1,0 +1,33 @@
+Leetcode 661:- ImageSmoother
+
+
+
+Solution:(BruteForce Approach)
+
+
+class Solution {
+
+    public static int solve(int i,int j,int[][] arr){
+        int sum = 0;
+        int count=0;
+        for (int x=i-1;x<=i+1;x++){
+            for (int y=j-1;y<=j+1;y++){
+                if(x>=0 && x<arr.length && y>=0 && y<arr[0].length){
+                    sum+=arr[x][y];
+                    count++;
+                }
+            }
+        }
+        return sum/count;
+    }
+
+    public int[][] imageSmoother(int[][] img) {
+        int [][] res = new int[img.length][img[0].length];
+        for(int i=0;i<img.length;i++){
+            for (int j=0;j<img[0].length;j++){
+                res[i][j] = solve(i,j,img);
+            }
+        }
+        return res;
+    }
+}
